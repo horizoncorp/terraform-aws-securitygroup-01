@@ -1,5 +1,5 @@
 module "ssh_22" {
-  source            = "../../"
+  source            = "../sg-rule/"
   name              = var.name
   security_group_id = var.security_group_id
   sg_rule_type      = "ingress"
