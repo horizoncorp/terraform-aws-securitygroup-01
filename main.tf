@@ -1,11 +1,11 @@
 resource "aws_security_group" "sg" {
-  count  = length(var.security_group_id) ? false : true
+  count  = var.security_group_id == null ? true : 1
   name   = var.name
   vpc_id = var.vpc_id
 }
 
 resource "aws_security_group_rule" "default_rule" {
-  count             = length(var.security_group_id) ? false : true
+  count             = var.security_group_id == null ? true : 1
   type              = "egress"
   from_port         = 0
   to_port           = 0
@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "default_rule" {
 }
 
 resource "aws_security_group_rule" "sg_rule" {
-  count             = length(var.security_group_id) ? true : false
+  count             = var.security_group_id != null ? true : 1
   type              = var.sg_rule_type
   from_port         = var.from_port
   to_port           = var.to_port
