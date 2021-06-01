@@ -1,6 +1,6 @@
 
 resource "aws_security_group_rule" "sg_rule" {
-  sg_rule_type      = var.sg_rule_type
+  type              = var.sg_rule_type
   from_port         = var.from_port
   to_port           = var.to_port
   protocol          = var.protocol

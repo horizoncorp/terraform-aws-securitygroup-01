@@ -6,7 +6,7 @@ resource "aws_security_group" "sg" {
 module "allow_all_egress" {
   source            = "./modules/sg-rule"
   security_group_id = aws_security_group.sg.id
-  type              = "egress"
+  sg_rule_type      = "egress"
   from_port         = 22
   to_port           = 22
   protocol          = "-1"
