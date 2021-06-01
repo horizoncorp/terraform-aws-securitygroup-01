@@ -4,13 +4,13 @@ locals {
 }
 
 resource "aws_security_group" "sg" {
-  count  = locals.create_sg
+  count  = local.create_sg
   name   = var.name
   vpc_id = var.vpc_id
 }
 
 resource "aws_security_group_rule" "default_rule" {
-  count             = locals.create_sg
+  count             = local.create_sg
   type              = "egress"
   from_port         = 0
   to_port           = 0
@@ -20,7 +20,7 @@ resource "aws_security_group_rule" "default_rule" {
 }
 
 resource "aws_security_group_rule" "sg_rule" {
-  count             = var.security_group_id == null ? 1 : 0
+  count             = local.not_create_sg
   type              = var.sg_rule_type
   from_port         = var.from_port
   to_port           = var.to_port
