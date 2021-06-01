@@ -2,7 +2,7 @@ variable "name" {
     default = ""
 }
 variable "security_group_id" {
-    default = ""
+    default = null
 }
 variable "vpc_id" {
     default = ""
