@@ -1,6 +1,10 @@
 resource "aws_security_group" "sg" {
   name   = var.name
   vpc_id = var.vpc_id
+  tags = merge(var.tags,{
+    Name = var.name,
+    Role = "Bastion"
+  })
 }
 
 module "allow_all_egress" {
