@@ -8,7 +8,7 @@ variable "vpc_id" {
     default = ""
 }
 variable "sg_rule_type" {
-    default = ""
+    default = "egress"
 }
 variable "from_port" {
     default = 0
