@@ -1,4 +1,4 @@
 output "sg_id" {
   description = "SG ID"
-  value       = var.security_group_id == null ? var.security_group_id : aws_security_group.sg[0].id
+  value       = var.security_group_id == null ? aws_security_group.sg[0].id : var.security_group_id 
 }
