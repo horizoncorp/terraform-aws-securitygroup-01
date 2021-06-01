@@ -4,7 +4,7 @@ resource "aws_security_group" "sg" {
   vpc_id = var.vpc_id
 }
 
-resource "aws_security_group_rule" "sg_rule" {
+resource "aws_security_group_rule" "default_rule" {
   count             = length(var.security_group_id) ? 0 : 1
   type              = "egress"
   from_port         = 0
