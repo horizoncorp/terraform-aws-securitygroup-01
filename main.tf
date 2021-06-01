@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "default_rule" {
 }
 
 resource "aws_security_group_rule" "sg_rule" {
-  count             = length(var.security_group_id) ? false : true
+  count             = length(var.security_group_id) ? true : false
   type              = var.sg_rule_type
   from_port         = var.from_port
   to_port           = var.to_port
