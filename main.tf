@@ -1,9 +1,17 @@
+locals {
+  environment = lookup(var.tags, "Envioronment","environment")
+  department = lookup(var.tags, "Department","department")
+  role = lookup(var.tags, "Role","role")
+  id = lookup(var.tags, "ID","id")
+
+  sg_name = "${local.environment}-${local.department}-sg-${local.role}-${local.id}"
+}
+
 resource "aws_security_group" "sg" {
-  name   = var.name
+  name = local.sg_name
   vpc_id = var.vpc_id
   tags = merge(var.tags,{
-    Name = var.name,
-    Role = "Bastion"
+    Name = local.sg_name
   })
 }
 
